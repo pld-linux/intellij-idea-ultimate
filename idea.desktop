@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=IntelliJ IDEA Ultimate Edition
+GenericName=IntelliJ IDEA UE
+Comment=Development Environment for Java and Groovy
+Type=Application
+Categories=Development;IDE;Java;
+Exec=idea %F
+TryExec=idea
+StartupNotify=true
+Icon=idea

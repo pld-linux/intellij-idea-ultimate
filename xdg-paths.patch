@@ -1,0 +1,44 @@
+--- idea-IU-129.713/bin/idea.sh~	2013-06-10 12:27:34.000000000 +0300
++++ idea-IU-129.713/bin/idea.sh	2013-09-30 12:48:36.835154099 +0300
+@@ -163,8 +163,11 @@
+   fi
+ fi
+ 
++CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/IntelliJIdea"
++CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/IntelliJIdea"
++
+ COMMON_JVM_ARGS="\"-Xbootclasspath/a:$IDE_HOME/lib/boot.jar\" -Didea.paths.selector=IntelliJIdea12 $IDE_PROPERTIES_PROPERTY"
+-IDE_JVM_ARGS=""
++IDE_JVM_ARGS="-Dwebide.config.dir=$CONFIG_DIR -Dwebide.cache.dir=$CACHE_DIR"
+ ALL_JVM_ARGS="$VM_OPTIONS $COMMON_JVM_ARGS $IDE_JVM_ARGS $AGENT $REQUIRED_JVM_ARGS"
+ 
+ CLASSPATH="$IDE_HOME/lib/bootstrap.jar"
+--- idea-IU-129.713/bin/idea.properties~	2013-06-10 12:39:20.000000000 +0300
++++ idea-IU-129.713/bin/idea.properties	2013-09-30 12:46:17.547680955 +0300
+@@ -5,22 +5,22 @@
+ #---------------------------------------------------------------------
+ # Uncomment this option if you want to customize path to IDE config folder. Make sure you're using forward slashes
+ #---------------------------------------------------------------------
+-# idea.config.path=${user.home}/.IntelliJIdea/config
++idea.config.path=${webide.config.dir}
+ 
+ #---------------------------------------------------------------------
+ # Uncomment this option if you want to customize path to IDE system folder. Make sure you're using forward slashes
+ #---------------------------------------------------------------------
+-# idea.system.path=${user.home}/.IntelliJIdea/system
++idea.system.path=${webide.cache.dir}
+ 
+ #---------------------------------------------------------------------
+ # Uncomment this option if you want to customize path to user installed plugins folder. Make sure you're using forward slashes
+ #---------------------------------------------------------------------
+-# idea.plugins.path=${user.home}/.IntelliJIdea/config/plugins
++idea.plugins.path=${webide.config.dir}/plugins
+ 
+ #---------------------------------------------------------------------
+ # Uncomment this option if you want to customize path to IDE logs folder. Make sure you're using forward slashes.
+ #---------------------------------------------------------------------
+-# idea.log.path=${user.home}/.IntelliJIdea/system/log
++idea.log.path=${webide.cache.dir}/log
+ 
+ #---------------------------------------------------------------------
+ # Maximum file size (kilobytes) IDE should provide code assistance for.
