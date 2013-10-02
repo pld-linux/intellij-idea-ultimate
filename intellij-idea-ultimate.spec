@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	12.1.4
-Release:	0.8
+Version:	12.1.5
+Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download-ln.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	b3a2e34a607453f1d6bddffdf0a162a3
+# NoSource0-md5:	445c2ff372c5991aae86d9a213f1f837
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -55,7 +55,7 @@ BuildArch:	noarch
 Libraries for IntelliJ IDEA.
 
 %prep
-%setup -qn %{proddir}-129.713
+%setup -qn %{proddir}-129.1328
 %patch0 -p1
 
 # keep only single arch files (don't want to pull 32bit deps by default),
