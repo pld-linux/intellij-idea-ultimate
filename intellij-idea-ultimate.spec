@@ -19,8 +19,10 @@ BuildRequires:	rpmbuild(macros) >= 1.596
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	desktop-file-utils
 Requires:	jre >= 1.6
+Suggests:	java-jdbc-mysql
 Suggests:	jdk >= 1.6
 Conflicts:	intellij-idea
+Conflicts:	java-jdbc-mysql < 5.1.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # disable debuginfo package, not useful
