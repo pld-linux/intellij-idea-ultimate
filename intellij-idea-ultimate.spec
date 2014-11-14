@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	14
+Version:	14.0.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download-ln.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	f72ce091f94cc457caf8b0cbb4b9861c
+# NoSource0-md5:	bab41dce05ae124760be538209217426
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
