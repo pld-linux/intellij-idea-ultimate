@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	14.1.5
+Version:	15.0
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download-ln.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	c62aa94ff33a196cc45557af480abf74
+# NoSource0-md5:	4da955e200b6e1b4f82ca81871cd01c0
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -75,6 +75,7 @@ rm bin/fsnotifier
 rm bin/libbreakgen.so
 rm bin/libyjpagent-linux.so
 %endif
+rm bin/fsnotifier-arm
 chmod a+rx bin/*.so bin/fsnotifier*
 mv bin/%{product}.png .
 
@@ -90,6 +91,9 @@ cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 ln -s %{_appdir}/bin/%{product}.sh $RPM_BUILD_ROOT%{_bindir}/%{product}
+rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/gradle/lib/native-platform-{freebsd,osx,windows}*
+rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/tfsIntegration/lib/native/{aix,freebsd,hpux,macosx,solaris,win32}
+rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/tfsIntegration/lib/native/linux/{arm,ppc}
 
 desktop-file-validate $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 
