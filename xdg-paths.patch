@@ -4,38 +4,44 @@
    fi
  fi
  
--IDE_JVM_ARGS=""
-+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/IntelliJIdea"
-+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/IntelliJIdea"
++WEBIDE_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/IntelliJIdea"
++WEBIDE_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/IntelliJIdea"
 +
-+IDE_JVM_ARGS="-Dwebide.config.dir=$CONFIG_DIR -Dwebide.cache.dir=$CACHE_DIR"
- 
- CLASSPATH="$IDE_HOME/lib/bootstrap.jar"
---- idea-IU-129.713/bin/idea.properties~	2013-06-10 12:39:20.000000000 +0300
-+++ idea-IU-129.713/bin/idea.properties	2013-09-30 12:46:17.547680955 +0300
-@@ -5,22 +5,22 @@
- #---------------------------------------------------------------------
+ # ---------------------------------------------------------------------
+ # Run the IDE.
+ # ---------------------------------------------------------------------
+@@ -187,6 +190,7 @@
+   "-Xbootclasspath/a:$IDE_HOME/lib/boot.jar" \
+   -classpath "$CLASSPATH" \
+   $VM_OPTIONS \
++  -Dwebide.config.dir=$WEBIDE_CONFIG_DIR -Dwebide.cache.dir=$WEBIDE_CACHE_DIR \
+   "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
+   "-XX:ErrorFile=$HOME/java_error_in_WEBIDE_%p.log" \
+   "-XX:HeapDumpPath=$HOME/java_error_in_WEBIDE.hprof" \
+--- IntelliJIdea-145.258.2/bin/idea.properties~	2016-03-16 17:02:05.000000000 +0200
++++ IntelliJIdea-145.258.2/bin/idea.properties	2016-03-21 11:07:02.191952728 +0200
+@@ -6,21 +6,25 @@
  # Uncomment this option if you want to customize path to IDE config folder. Make sure you're using forward slashes.
  #---------------------------------------------------------------------
--# idea.config.path=${user.home}/.IntelliJIdea/config
+ # idea.config.path=${user.home}/.IntelliJIdea/config
 +idea.config.path=${webide.config.dir}
  
  #---------------------------------------------------------------------
  # Uncomment this option if you want to customize path to IDE system folder. Make sure you're using forward slashes.
  #---------------------------------------------------------------------
--# idea.system.path=${user.home}/.IntelliJIdea/system
+ # idea.system.path=${user.home}/.IntelliJIdea/system
 +idea.system.path=${webide.cache.dir}
  
  #---------------------------------------------------------------------
  # Uncomment this option if you want to customize path to user installed plugins folder. Make sure you're using forward slashes.
  #---------------------------------------------------------------------
--# idea.plugins.path=${idea.config.path}/plugins
+ # idea.plugins.path=${idea.config.path}/plugins
 +idea.plugins.path=${webide.config.dir}/plugins
  
  #---------------------------------------------------------------------
  # Uncomment this option if you want to customize path to IDE logs folder. Make sure you're using forward slashes.
  #---------------------------------------------------------------------
--# idea.log.path=${idea.system.path}/log
+ # idea.log.path=${idea.system.path}/log
 +idea.log.path=${webide.cache.dir}/log
  
  #---------------------------------------------------------------------
