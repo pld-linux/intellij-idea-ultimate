@@ -18,7 +18,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.596
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	jre >= 1.6
+Requires:	jre >= 1.8
 Suggests:	java-jdbc-mysql
 Suggests:	jdk >= 1.6
 Conflicts:	intellij-idea
