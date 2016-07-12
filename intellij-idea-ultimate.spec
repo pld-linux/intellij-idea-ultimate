@@ -19,6 +19,7 @@ BuildRequires:	rpmbuild(macros) >= 1.596
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	desktop-file-utils
 Requires:	jre >= 1.8
+Suggests:	%{name}-jre = %{version}-%{release}
 Suggests:	java-jdbc-mysql
 Suggests:	jdk >= 1.6
 Conflicts:	intellij-idea
@@ -56,6 +57,13 @@ BuildArch:	noarch
 %description libs
 Libraries for IntelliJ IDEA.
 
+%package jre
+Summary:	Bundled JRE recommended for running IntelliJ IDEA
+Group:		Libraries/Java
+
+%description jre
+Bundled JRE recommended for running IntelliJ IDEA.
+
 %prep
 %setup -qc
 mv %{proddir}-*/* .
@@ -86,7 +94,7 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_pixmapsdir},%{_desktopdir}}
 cp -l build.txt $RPM_BUILD_ROOT/cp-test && l=l && rm -f $RPM_BUILD_ROOT/cp-test
-cp -a$l bin help lib license plugins $RPM_BUILD_ROOT%{_appdir}
+cp -a$l bin help jre lib license plugins $RPM_BUILD_ROOT%{_appdir}
 cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
@@ -133,3 +141,27 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/license
 %{_appdir}/plugins
 %{_appdir}/help
+
+%files jre
+%defattr(644,root,root,755)
+%dir %{_appdir}/jre
+%dir %{_appdir}/jre/jre
+%dir %{_appdir}/jre/jre/bin
+%attr(755,root,root) %{_appdir}/jre/jre/bin/java
+%attr(755,root,root) %{_appdir}/jre/jre/bin/jjs
+%attr(755,root,root) %{_appdir}/jre/jre/bin/keytool
+%attr(755,root,root) %{_appdir}/jre/jre/bin/orbd
+%attr(755,root,root) %{_appdir}/jre/jre/bin/pack200
+%attr(755,root,root) %{_appdir}/jre/jre/bin/policytool
+%attr(755,root,root) %{_appdir}/jre/jre/bin/rmid
+%attr(755,root,root) %{_appdir}/jre/jre/bin/rmiregistry
+%attr(755,root,root) %{_appdir}/jre/jre/bin/servertool
+%attr(755,root,root) %{_appdir}/jre/jre/bin/tnameserv
+%attr(755,root,root) %{_appdir}/jre/jre/bin/unpack200
+%{_appdir}/jre/jre/lib
+%{_appdir}/jre/jre/man
+%{_appdir}/jre/jre/ASSEMBLY_EXCEPTION
+%{_appdir}/jre/jre/LICENSE
+%{_appdir}/jre/jre/release
+%{_appdir}/jre/jre/THIRD_PARTY_README
+%{_appdir}/jre/lib
