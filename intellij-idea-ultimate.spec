@@ -60,6 +60,7 @@ Libraries for IntelliJ IDEA.
 %package jre
 Summary:	Bundled JRE recommended for running IntelliJ IDEA
 Group:		Libraries/Java
+Requires:	%{name} = %{version}-%{release}
 
 %description jre
 Bundled JRE recommended for running IntelliJ IDEA.
