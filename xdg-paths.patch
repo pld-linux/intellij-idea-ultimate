@@ -11,13 +11,13 @@
  # Run the IDE.
  # ---------------------------------------------------------------------
 @@ -187,6 +190,7 @@
-   "-Xbootclasspath/a:$IDE_HOME/lib/boot.jar" \
-   -classpath "$CLASSPATH" \
-   $VM_OPTIONS \
+   "-XX:ErrorFile=$HOME/java_error_in_IDEA_%p.log" \
+   "-XX:HeapDumpPath=$HOME/java_error_in_IDEA.hprof" \
+   -Didea.paths.selector=IntelliJIdea2016.3 \
 +  -Dwebide.config.dir=$WEBIDE_CONFIG_DIR -Dwebide.cache.dir=$WEBIDE_CACHE_DIR \
    "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
-   "-XX:ErrorFile=$HOME/java_error_in_WEBIDE_%p.log" \
-   "-XX:HeapDumpPath=$HOME/java_error_in_WEBIDE.hprof" \
+   ${IDE_PROPERTIES_PROPERTY} \
+   -Didea.jre.check=true \
 --- IntelliJIdea-145.258.2/bin/idea.properties~	2016-03-16 17:02:05.000000000 +0200
 +++ IntelliJIdea-145.258.2/bin/idea.properties	2016-03-21 11:07:02.191952728 +0200
 @@ -6,21 +6,25 @@
