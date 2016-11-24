@@ -22,6 +22,8 @@ Requires:	jre >= 1.8
 Suggests:	%{name}-jre = %{version}-%{release}
 Suggests:	java-jdbc-mysql
 Suggests:	jdk >= 1.6
+Suggests:	open
+Suggests:	python
 Conflicts:	intellij-idea
 Conflicts:	java-jdbc-mysql < 5.1.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
