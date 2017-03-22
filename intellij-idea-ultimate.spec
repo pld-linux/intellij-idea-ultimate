@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2016.3.5
+Version:	2017.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	e43072dc281526ce5fb14899b03a62a7
+# NoSource0-md5:	625623556cdbb93f863dae7dc34ac618
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -77,13 +77,11 @@ mv %{proddir}-*/* .
 %ifarch %{ix86}
 rm bin/%{product}64.vmoptions
 rm bin/fsnotifier64
-rm bin/libbreakgen64.so
 rm bin/libyjpagent-linux64.so
 %endif
 %ifarch %{x8664}
 rm bin/%{product}.vmoptions
 rm bin/fsnotifier
-rm bin/libbreakgen.so
 rm bin/libyjpagent-linux.so
 %endif
 rm bin/fsnotifier-arm
@@ -132,7 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/bin/format.sh
 %attr(755,root,root) %{_appdir}/bin/inspect.sh
 %attr(755,root,root) %{_appdir}/bin/fsnotifier*
-%attr(755,root,root) %{_appdir}/bin/libbreakgen*.so
 %attr(755,root,root) %{_appdir}/bin/libyjpagent*.so
 %attr(755,root,root) %{_appdir}/bin/printenv.py
 %attr(755,root,root) %{_appdir}/bin/restart.py
@@ -151,22 +148,20 @@ rm -rf $RPM_BUILD_ROOT
 %files jre
 %defattr(644,root,root,755)
 %dir %{_appdir}/jre
-%dir %{_appdir}/jre/jre
-%dir %{_appdir}/jre/jre/bin
-%attr(755,root,root) %{_appdir}/jre/jre/bin/java
-%attr(755,root,root) %{_appdir}/jre/jre/bin/jjs
-%attr(755,root,root) %{_appdir}/jre/jre/bin/keytool
-%attr(755,root,root) %{_appdir}/jre/jre/bin/orbd
-%attr(755,root,root) %{_appdir}/jre/jre/bin/pack200
-%attr(755,root,root) %{_appdir}/jre/jre/bin/policytool
-%attr(755,root,root) %{_appdir}/jre/jre/bin/rmid
-%attr(755,root,root) %{_appdir}/jre/jre/bin/rmiregistry
-%attr(755,root,root) %{_appdir}/jre/jre/bin/servertool
-%attr(755,root,root) %{_appdir}/jre/jre/bin/tnameserv
-%attr(755,root,root) %{_appdir}/jre/jre/bin/unpack200
-%{_appdir}/jre/jre/lib
-%{_appdir}/jre/jre/ASSEMBLY_EXCEPTION
-%{_appdir}/jre/jre/LICENSE
-%{_appdir}/jre/jre/release
-%{_appdir}/jre/jre/THIRD_PARTY_README
+%dir %{_appdir}/jre/bin
+%attr(755,root,root) %{_appdir}/jre/bin/java
+%attr(755,root,root) %{_appdir}/jre/bin/jjs
+%attr(755,root,root) %{_appdir}/jre/bin/keytool
+%attr(755,root,root) %{_appdir}/jre/bin/orbd
+%attr(755,root,root) %{_appdir}/jre/bin/pack200
+%attr(755,root,root) %{_appdir}/jre/bin/policytool
+%attr(755,root,root) %{_appdir}/jre/bin/rmid
+%attr(755,root,root) %{_appdir}/jre/bin/rmiregistry
+%attr(755,root,root) %{_appdir}/jre/bin/servertool
+%attr(755,root,root) %{_appdir}/jre/bin/tnameserv
+%attr(755,root,root) %{_appdir}/jre/bin/unpack200
 %{_appdir}/jre/lib
+%{_appdir}/jre/ASSEMBLY_EXCEPTION
+%{_appdir}/jre/LICENSE
+%{_appdir}/jre/release
+%{_appdir}/jre/THIRD_PARTY_README
