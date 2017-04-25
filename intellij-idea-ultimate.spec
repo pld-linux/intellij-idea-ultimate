@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2017.1.1
+Version:	2017.1.2
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	80451a19758d92f2413bd17d7dc482d2
+# NoSource0-md5:	efcd728deb8063ebafa56ed643c7ddfa
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -19,7 +19,9 @@ BuildRequires:	rpmbuild(macros) >= 1.596
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	desktop-file-utils
 Requires:	jre >= 1.8
+%ifarch %{x8664}
 Suggests:	%{name}-jre = %{version}-%{release}
+%endif
 Suggests:	java-jdbc-mysql
 Suggests:	jdk >= 1.6
 Suggests:	open
@@ -95,7 +97,10 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_pixmapsdir},%{_desktopdir}}
 cp -l build.txt $RPM_BUILD_ROOT/cp-test && l=l && rm -f $RPM_BUILD_ROOT/cp-test
-cp -a$l bin help jre lib license plugins $RPM_BUILD_ROOT%{_appdir}
+cp -a$l bin help lib license plugins $RPM_BUILD_ROOT%{_appdir}
+%ifarch %{x8664}
+cp -a$l jre64 $RPM_BUILD_ROOT%{_appdir}
+%endif
 cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
@@ -145,23 +150,25 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/plugins
 %{_appdir}/help
 
+%ifarch %{x8664}
 %files jre
 %defattr(644,root,root,755)
-%dir %{_appdir}/jre
-%dir %{_appdir}/jre/bin
-%attr(755,root,root) %{_appdir}/jre/bin/java
-%attr(755,root,root) %{_appdir}/jre/bin/jjs
-%attr(755,root,root) %{_appdir}/jre/bin/keytool
-%attr(755,root,root) %{_appdir}/jre/bin/orbd
-%attr(755,root,root) %{_appdir}/jre/bin/pack200
-%attr(755,root,root) %{_appdir}/jre/bin/policytool
-%attr(755,root,root) %{_appdir}/jre/bin/rmid
-%attr(755,root,root) %{_appdir}/jre/bin/rmiregistry
-%attr(755,root,root) %{_appdir}/jre/bin/servertool
-%attr(755,root,root) %{_appdir}/jre/bin/tnameserv
-%attr(755,root,root) %{_appdir}/jre/bin/unpack200
-%{_appdir}/jre/lib
-%{_appdir}/jre/ASSEMBLY_EXCEPTION
-%{_appdir}/jre/LICENSE
-%{_appdir}/jre/release
-%{_appdir}/jre/THIRD_PARTY_README
+%dir %{_appdir}/jre64
+%dir %{_appdir}/jre64/bin
+%attr(755,root,root) %{_appdir}/jre64/bin/java
+%attr(755,root,root) %{_appdir}/jre64/bin/jjs
+%attr(755,root,root) %{_appdir}/jre64/bin/keytool
+%attr(755,root,root) %{_appdir}/jre64/bin/orbd
+%attr(755,root,root) %{_appdir}/jre64/bin/pack200
+%attr(755,root,root) %{_appdir}/jre64/bin/policytool
+%attr(755,root,root) %{_appdir}/jre64/bin/rmid
+%attr(755,root,root) %{_appdir}/jre64/bin/rmiregistry
+%attr(755,root,root) %{_appdir}/jre64/bin/servertool
+%attr(755,root,root) %{_appdir}/jre64/bin/tnameserv
+%attr(755,root,root) %{_appdir}/jre64/bin/unpack200
+%{_appdir}/jre64/lib
+%{_appdir}/jre64/ASSEMBLY_EXCEPTION
+%{_appdir}/jre64/LICENSE
+%{_appdir}/jre64/release
+%{_appdir}/jre64/THIRD_PARTY_README
+%endif
