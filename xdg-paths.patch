@@ -13,7 +13,7 @@
 @@ -187,6 +190,7 @@
    "-XX:ErrorFile=$HOME/java_error_in_IDEA_%p.log" \
    "-XX:HeapDumpPath=$HOME/java_error_in_IDEA.hprof" \
-   -Didea.paths.selector=IntelliJIdea2017.1 \
+   -Didea.paths.selector=IntelliJIdea2017.2 \
 +  -Dwebide.config.dir=$WEBIDE_CONFIG_DIR -Dwebide.cache.dir=$WEBIDE_CACHE_DIR \
    "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
    ${IDE_PROPERTIES_PROPERTY} \
