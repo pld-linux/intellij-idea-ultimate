@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2017.3.5
+Version:	2018.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	22a93b459595641e448fab35fd6117e8
+# NoSource0-md5:	340971bbab879fb1b623721a1943df68
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -105,7 +105,6 @@ cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 ln -s %{_appdir}/bin/%{product}.sh $RPM_BUILD_ROOT%{_bindir}/%{product}
-rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/gradle/lib/native-platform-{freebsd,osx,windows}*
 rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/tfsIntegration/lib/native/{aix,freebsd,hpux,macosx,solaris,win32}
 rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/tfsIntegration/lib/native/linux/{arm,ppc}
 
