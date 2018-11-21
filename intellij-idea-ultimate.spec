@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2018.2.5
+Version:	2018.3
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	06d3d806674a5e42f20ec0a8d857ed78
+# NoSource0-md5:	e86dfce06b011f391bf6c54fb25c22da
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -97,7 +97,7 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_pixmapsdir},%{_desktopdir}}
 cp -l build.txt $RPM_BUILD_ROOT/cp-test && l=l && rm -f $RPM_BUILD_ROOT/cp-test
-cp -a$l bin help lib license plugins $RPM_BUILD_ROOT%{_appdir}
+cp -a$l bin build.txt help lib license plugins $RPM_BUILD_ROOT%{_appdir}
 %ifarch %{x8664}
 cp -a$l jre64 $RPM_BUILD_ROOT%{_appdir}
 %endif
@@ -128,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/bin/%{product}*.vmoptions
 %{_appdir}/bin/%{product}.png
 %{_appdir}/bin/%{product}.properties
+%{_appdir}/bin/%{product}.svg
 %{_appdir}/bin/appletviewer.policy
 %{_appdir}/bin/log.xml
 %attr(755,root,root) %{_appdir}/bin/%{product}.sh
@@ -137,6 +138,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/bin/libyjpagent*.so
 %attr(755,root,root) %{_appdir}/bin/printenv.py
 %attr(755,root,root) %{_appdir}/bin/restart.py
+%ifarch %{x8664}
+%attr(755,root,root) %{_appdir}/bin/libdbm64.so
+%endif
 %{_desktopdir}/%{product}.desktop
 %{_pixmapsdir}/%{product}.png
 
@@ -144,6 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %dir %{_appdir}
+%{_appdir}/build.txt
 %{_appdir}/lib
 %{_appdir}/license
 %{_appdir}/plugins
