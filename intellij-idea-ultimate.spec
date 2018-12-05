@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2018.3
+Version:	2018.3.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	e86dfce06b011f391bf6c54fb25c22da
+# NoSource0-md5:	3ac6dc1b30884336b8d1b51416766814
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
