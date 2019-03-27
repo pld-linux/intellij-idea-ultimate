@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2018.3.5
+Version:	2019.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	cd9ae212a1028ef16133bdf03c244678
+# NoSource0-md5:	fabfc7ce6ac0625f342604e4431ff1c5
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -105,8 +105,7 @@ cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 ln -s %{_appdir}/bin/%{product}.sh $RPM_BUILD_ROOT%{_bindir}/%{product}
-rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/tfsIntegration/lib/native/{aix,freebsd,hpux,macosx,solaris,win32}
-rm -r $RPM_BUILD_ROOT%{_appdir}/plugins/tfsIntegration/lib/native/linux/{arm,ppc}
+rm -r $RPM_BUILD_ROOT%{_appdir}/lib/pty4j-native/linux/ppc64le
 
 desktop-file-validate $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 
@@ -159,6 +158,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_appdir}/jre64
 %dir %{_appdir}/jre64/bin
+%attr(755,root,root) %{_appdir}/jre64/bin/clhsdb
+%attr(755,root,root) %{_appdir}/jre64/bin/hsdb
 %attr(755,root,root) %{_appdir}/jre64/bin/java
 %attr(755,root,root) %{_appdir}/jre64/bin/jjs
 %attr(755,root,root) %{_appdir}/jre64/bin/keytool
