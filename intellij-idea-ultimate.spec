@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2019.1.3
+Version:	2019.2
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	819c892dec895b41014405a0643aa2d3
+# NoSource0-md5:	5d57914ecc444c5f4c8a3acbd566154b
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -79,12 +79,10 @@ mv %{proddir}-*/* .
 %ifarch %{ix86}
 rm bin/%{product}64.vmoptions
 rm bin/fsnotifier64
-rm bin/libyjpagent-linux64.so
 %endif
 %ifarch %{x8664}
 rm bin/%{product}.vmoptions
 rm bin/fsnotifier
-rm bin/libyjpagent-linux.so
 %endif
 rm bin/fsnotifier-arm
 chmod a+rx bin/*.so bin/fsnotifier*
@@ -99,7 +97,7 @@ install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_pixmapsdir},%{_desktopdir}}
 cp -l build.txt $RPM_BUILD_ROOT/cp-test && l=l && rm -f $RPM_BUILD_ROOT/cp-test
 cp -a$l bin build.txt help lib license plugins $RPM_BUILD_ROOT%{_appdir}
 %ifarch %{x8664}
-cp -a$l jre64 $RPM_BUILD_ROOT%{_appdir}
+cp -a$l jbr $RPM_BUILD_ROOT%{_appdir}
 %endif
 cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
@@ -134,7 +132,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/bin/format.sh
 %attr(755,root,root) %{_appdir}/bin/inspect.sh
 %attr(755,root,root) %{_appdir}/bin/fsnotifier*
-%attr(755,root,root) %{_appdir}/bin/libyjpagent*.so
 %attr(755,root,root) %{_appdir}/bin/printenv.py
 %attr(755,root,root) %{_appdir}/bin/restart.py
 %ifarch %{x8664}
@@ -156,24 +153,23 @@ rm -rf $RPM_BUILD_ROOT
 %ifarch %{x8664}
 %files jre
 %defattr(644,root,root,755)
-%dir %{_appdir}/jre64
-%dir %{_appdir}/jre64/bin
-%attr(755,root,root) %{_appdir}/jre64/bin/clhsdb
-%attr(755,root,root) %{_appdir}/jre64/bin/hsdb
-%attr(755,root,root) %{_appdir}/jre64/bin/java
-%attr(755,root,root) %{_appdir}/jre64/bin/jjs
-%attr(755,root,root) %{_appdir}/jre64/bin/keytool
-%attr(755,root,root) %{_appdir}/jre64/bin/orbd
-%attr(755,root,root) %{_appdir}/jre64/bin/pack200
-%attr(755,root,root) %{_appdir}/jre64/bin/policytool
-%attr(755,root,root) %{_appdir}/jre64/bin/rmid
-%attr(755,root,root) %{_appdir}/jre64/bin/rmiregistry
-%attr(755,root,root) %{_appdir}/jre64/bin/servertool
-%attr(755,root,root) %{_appdir}/jre64/bin/tnameserv
-%attr(755,root,root) %{_appdir}/jre64/bin/unpack200
-%{_appdir}/jre64/lib
-%{_appdir}/jre64/ASSEMBLY_EXCEPTION
-%{_appdir}/jre64/LICENSE
-%{_appdir}/jre64/release
-%{_appdir}/jre64/THIRD_PARTY_README
+%dir %{_appdir}/jbr
+%dir %{_appdir}/jbr/bin
+%attr(755,root,root) %{_appdir}/jbr/bin/jaotc
+%attr(755,root,root) %{_appdir}/jbr/bin/java
+%attr(755,root,root) %{_appdir}/jbr/bin/javac
+%attr(755,root,root) %{_appdir}/jbr/bin/jdb
+%attr(755,root,root) %{_appdir}/jbr/bin/jjs
+%attr(755,root,root) %{_appdir}/jbr/bin/jrunscript
+%attr(755,root,root) %{_appdir}/jbr/bin/keytool
+%attr(755,root,root) %{_appdir}/jbr/bin/pack200
+%attr(755,root,root) %{_appdir}/jbr/bin/rmid
+%attr(755,root,root) %{_appdir}/jbr/bin/rmiregistry
+%attr(755,root,root) %{_appdir}/jbr/bin/serialver
+%attr(755,root,root) %{_appdir}/jbr/bin/unpack200
+%{_appdir}/jbr/conf
+%{_appdir}/jbr/include
+%{_appdir}/jbr/legal
+%{_appdir}/jbr/lib
+%{_appdir}/jbr/release
 %endif
