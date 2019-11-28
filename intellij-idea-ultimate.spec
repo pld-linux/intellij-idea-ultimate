@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2019.2.4
+Version:	2019.3
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	52ccf55c09136fc9bb2cc6d2fbf7455f
+# NoSource0-md5:	4680ce7cab20197481d967a462d58def
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -84,7 +84,6 @@ rm bin/fsnotifier64
 rm bin/%{product}.vmoptions
 rm bin/fsnotifier
 %endif
-rm bin/fsnotifier-arm
 chmod a+rx bin/*.so bin/fsnotifier*
 mv bin/%{product}.png .
 
