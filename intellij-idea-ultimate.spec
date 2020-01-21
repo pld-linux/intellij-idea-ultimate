@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2019.3.1
+Version:	2019.3.2
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	0de5e2f9a3db93f95def54b172a3b47d
+# NoSource0-md5:	42d1d3644f8387c42b04baaac81f840a
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -90,6 +90,9 @@ mv bin/%{product}.png .
 # cleanup backups after patching
 find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
+grep -r '#!.*env bash' -l plugins/Kotlin/kotlinc/bin | xargs %{__sed} -i -e '1 s,#!.*env bash.*,#!/bin/bash,'
+grep -r '#!.*env python' -l bin | xargs %{__sed} -i -e '1 s,#!.*env python.*,#!%{__python},'
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_bindir},%{_pixmapsdir},%{_desktopdir}}
@@ -158,6 +161,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/jbr/bin/java
 %attr(755,root,root) %{_appdir}/jbr/bin/javac
 %attr(755,root,root) %{_appdir}/jbr/bin/jdb
+%attr(755,root,root) %{_appdir}/jbr/bin/jhsdb
 %attr(755,root,root) %{_appdir}/jbr/bin/jjs
 %attr(755,root,root) %{_appdir}/jbr/bin/jrunscript
 %attr(755,root,root) %{_appdir}/jbr/bin/keytool
