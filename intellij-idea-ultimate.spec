@@ -1,6 +1,5 @@
 %define		product	idea
 %define		proddir	%{product}-IU
-%include	/usr/lib/rpm/macros.java
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
 Version:	2019.3.2
