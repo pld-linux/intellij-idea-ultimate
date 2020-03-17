@@ -2,12 +2,12 @@
 %define		proddir	%{product}-IU
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2019.3.3
+Version:	2019.3.4
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	4cfebda1deeb3b4dba65a22098b1416e
+# NoSource0-md5:	4ca9439d15d5ebe07fbfc64169e931c3
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -160,6 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/jbr/bin/java
 %attr(755,root,root) %{_appdir}/jbr/bin/javac
 %attr(755,root,root) %{_appdir}/jbr/bin/jdb
+%attr(755,root,root) %{_appdir}/jbr/bin/jfr
 %attr(755,root,root) %{_appdir}/jbr/bin/jhsdb
 %attr(755,root,root) %{_appdir}/jbr/bin/jjs
 %attr(755,root,root) %{_appdir}/jbr/bin/jrunscript
