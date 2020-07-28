@@ -2,12 +2,12 @@
 %define		proddir	%{product}-IU
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2020.1.4
+Version:	2020.2
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	0bb63b2566aef7577b36b05b1492e9d9
+# NoSource0-md5:	20de0107ec38b37bca0b7c2d361cebce
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -43,6 +43,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # rpm5 is so damn slow, so i use this for development:
 %define		_noautoreqfiles	.*\.jar
+
+%define		_noautoreq_java		ClassDataVersion
 
 %description
 IntelliJ IDEA is a code-centric IDE focused on developer productivity.
