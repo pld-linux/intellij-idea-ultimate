@@ -2,12 +2,12 @@
 %define		proddir	%{product}-IU
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2020.2.4
+Version:	2020.3
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	a38dc291ec55df3c978437280ca25cbc
+# NoSource0-md5:	61037571a16ee60d51250621fc04e0c5
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -106,7 +106,13 @@ cp -p %{product}.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{product}.png
 ln -s %{_pixmapsdir}/%{product}.png $RPM_BUILD_ROOT%{_appdir}/bin/%{product}.png
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 ln -s %{_appdir}/bin/%{product}.sh $RPM_BUILD_ROOT%{_bindir}/%{product}
-rm -r $RPM_BUILD_ROOT%{_appdir}/lib/pty4j-native/linux/ppc64le
+%ifnarch aarch64
+rm -r $RPM_BUILD_ROOT%{_appdir}/lib/pty4j-native/linux/aarch64
+%endif
+%ifnarch %{ix86} %{x8664}
+rm -r $RPM_BUILD_ROOT%{_appdir}/lib/pty4j-native/linux/x86*
+%endif
+rm -r $RPM_BUILD_ROOT%{_appdir}/lib/pty4j-native/linux/{mips64el,ppc64le}
 
 desktop-file-validate $RPM_BUILD_ROOT%{_desktopdir}/%{product}.desktop
 
@@ -135,6 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/bin/format.sh
 %attr(755,root,root) %{_appdir}/bin/inspect.sh
 %attr(755,root,root) %{_appdir}/bin/fsnotifier*
+%attr(755,root,root) %{_appdir}/bin/ltedit.sh
 %attr(755,root,root) %{_appdir}/bin/printenv.py
 %attr(755,root,root) %{_appdir}/bin/restart.py
 %ifarch %{x8664}

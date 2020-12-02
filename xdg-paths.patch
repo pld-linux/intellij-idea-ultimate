@@ -11,9 +11,9 @@
  # Run the IDE.
  # ---------------------------------------------------------------------
 @@ -187,6 +190,7 @@
-   "-XX:HeapDumpPath=$HOME/java_error_in_IDEA.hprof" \
-   -Didea.vendor.name=${PRODUCT_VENDOR} \
-   -Didea.paths.selector=${PATHS_SELECTOR} \
+   "-XX:HeapDumpPath=$HOME/java_error_in_idea_.hprof" \
+   "-Didea.vendor.name=${PRODUCT_VENDOR}" \
+   "-Didea.paths.selector=${PATHS_SELECTOR}" \
 +  -Dwebide.config.dir=$WEBIDE_CONFIG_DIR -Dwebide.cache.dir=$WEBIDE_CACHE_DIR \
    "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
    ${IDE_PROPERTIES_PROPERTY} \
