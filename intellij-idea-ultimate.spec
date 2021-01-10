@@ -2,12 +2,12 @@
 %define		proddir	%{product}-IU
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2020.3
+Version:	2020.3.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	http://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	61037571a16ee60d51250621fc04e0c5
+# NoSource0-md5:	295d92ac0f5e42e6c3727379dfd58b48
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
