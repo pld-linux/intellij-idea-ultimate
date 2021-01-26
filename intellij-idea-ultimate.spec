@@ -14,7 +14,7 @@ Patch0:		xdg-paths.patch
 URL:		http://www.jetbrains.org/
 BuildRequires:	desktop-file-utils
 BuildRequires:	rpm-javaprov
-BuildRequires:	rpmbuild(macros) >= 1.596
+BuildRequires:	rpmbuild(macros) >= 1.752
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	desktop-file-utils
 Requires:	jre >= 1.8
@@ -55,9 +55,7 @@ always ready to help you shape your code.
 %package libs
 Summary:	Libraries for IntelliJ IDEA
 Group:		Libraries/Java
-%if "%{_rpmversion}" >= "5"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description libs
 Libraries for IntelliJ IDEA.
