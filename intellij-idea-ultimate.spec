@@ -55,7 +55,7 @@ always ready to help you shape your code.
 %package libs
 Summary:	Libraries for IntelliJ IDEA
 Group:		Libraries/Java
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description libs
 Libraries for IntelliJ IDEA.
