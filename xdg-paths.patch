@@ -1,7 +1,7 @@
 --- idea-IU-129.713/bin/idea.sh~	2013-06-10 12:27:34.000000000 +0300
 +++ idea-IU-129.713/bin/idea.sh	2013-09-30 12:48:36.835154099 +0300
 @@ -163,6 +163,9 @@
-   fi
+   CLASSPATH="$CLASSPATH:$IDEA_CLASSPATH"
  fi
  
 +WEBIDE_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/IntelliJIdea"
