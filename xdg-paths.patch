@@ -15,7 +15,7 @@
    "-Didea.vendor.name=${PRODUCT_VENDOR}" \
    "-Didea.paths.selector=${PATHS_SELECTOR}" \
 +  -Dwebide.config.dir=$WEBIDE_CONFIG_DIR -Dwebide.cache.dir=$WEBIDE_CACHE_DIR \
-   "-Djb.vmOptionsFile=$VM_OPTIONS_FILE" \
+   "-Djb.vmOptionsFile=${USER_VM_OPTIONS_FILE:-${VM_OPTIONS_FILE}}" \
    ${IDE_PROPERTIES_PROPERTY} \
    -Didea.jre.check=true \
 --- IntelliJIdea-145.258.2/bin/idea.properties~	2016-03-16 17:02:05.000000000 +0200

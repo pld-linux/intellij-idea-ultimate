@@ -2,12 +2,12 @@
 %define		proddir	%{product}-IU
 Summary:	IntelliJ IDEA - The Most Intelligent Java IDE
 Name:		intellij-idea-ultimate
-Version:	2020.3.3
+Version:	2021.1
 Release:	1
 License:	IntelliJ IDEA Commercial
 Group:		Development/Tools
 Source0:	https://download.jetbrains.com/idea/ideaIU-%{version}.tar.gz
-# NoSource0-md5:	ff5b2d37608f3a2b188150788ef45ed8
+# NoSource0-md5:	72c14d3fab43f7add5a6b4e8d37b7646
 NoSource:	0
 Source1:	%{product}.desktop
 Patch0:		xdg-paths.patch
@@ -166,11 +166,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_appdir}/jbr/bin/jaotc
 %attr(755,root,root) %{_appdir}/jbr/bin/java
 %attr(755,root,root) %{_appdir}/jbr/bin/javac
+%attr(755,root,root) %{_appdir}/jbr/bin/jcmd
 %attr(755,root,root) %{_appdir}/jbr/bin/jdb
 %attr(755,root,root) %{_appdir}/jbr/bin/jfr
 %attr(755,root,root) %{_appdir}/jbr/bin/jhsdb
+%attr(755,root,root) %{_appdir}/jbr/bin/jinfo
 %attr(755,root,root) %{_appdir}/jbr/bin/jjs
+%attr(755,root,root) %{_appdir}/jbr/bin/jmap
+%attr(755,root,root) %{_appdir}/jbr/bin/jps
 %attr(755,root,root) %{_appdir}/jbr/bin/jrunscript
+%attr(755,root,root) %{_appdir}/jbr/bin/jstack
+%attr(755,root,root) %{_appdir}/jbr/bin/jstat
 %attr(755,root,root) %{_appdir}/jbr/bin/keytool
 %attr(755,root,root) %{_appdir}/jbr/bin/pack200
 %attr(755,root,root) %{_appdir}/jbr/bin/rmid
