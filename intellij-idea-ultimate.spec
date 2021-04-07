@@ -24,7 +24,6 @@ Suggests:	%{name}-jre = %{version}-%{release}
 Suggests:	java-jdbc-mysql
 Suggests:	jdk >= 1.6
 Suggests:	open
-Suggests:	python
 Conflicts:	intellij-idea
 Conflicts:	java-jdbc-mysql < 5.1.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -93,7 +92,7 @@ mv bin/%{product}.png .
 find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 grep -r '#!.*env bash' -l plugins/Kotlin/kotlinc/bin | xargs %{__sed} -i -e '1 s,#!.*env bash.*,#!/bin/bash,'
-grep -r '#!.*env python' -l bin | xargs %{__sed} -i -e '1 s,#!.*env python.*,#!%{__python},'
+grep -r '#!.*env python' -l bin | xargs %{__sed} -i -e '1 s,#!.*env python.*,#!%{__python3},'
 
 %install
 rm -rf $RPM_BUILD_ROOT
