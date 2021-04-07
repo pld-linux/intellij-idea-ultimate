@@ -46,6 +46,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreq_java		ClassDataVersion
 
+%define		_noautoprovfiles	%{_appdir}
+%define		_noautoreq		libcef.so libjli.so
+
 %description
 IntelliJ IDEA is a code-centric IDE focused on developer productivity.
 The editor deeply understands your code and knows its way around the
