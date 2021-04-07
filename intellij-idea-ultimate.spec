@@ -188,6 +188,34 @@ rm -rf $RPM_BUILD_ROOT
 %{_appdir}/jbr/conf
 %{_appdir}/jbr/include
 %{_appdir}/jbr/legal
-%{_appdir}/jbr/lib
+%dir %{_appdir}/jbr/lib
+%{_appdir}/jbr/lib/*.pak
+%attr(755,root,root) %{_appdir}/jbr/lib/*.so
+%attr(755,root,root) %{_appdir}/jbr/lib/chrome-sandbox
+%{_appdir}/jbr/lib/classlist
+%{_appdir}/jbr/lib/ct.sym
+%{_appdir}/jbr/lib/icudtl.dat
+%attr(755,root,root) %{_appdir}/jbr/lib/jcef_helper
+%attr(755,root,root) %{_appdir}/jbr/lib/jexec
+%{_appdir}/jbr/lib/jrt-fs.jar
+%attr(755,root,root) %{_appdir}/jbr/lib/jspawnhelper
+%{_appdir}/jbr/lib/jvm.cfg
+%{_appdir}/jbr/lib/modules
+%{_appdir}/jbr/lib/psfont.properties.ja
+%{_appdir}/jbr/lib/psfontj2d.properties
+%{_appdir}/jbr/lib/snapshot_blob.bin
+%{_appdir}/jbr/lib/tzdb.dat
+%{_appdir}/jbr/lib/v8_context_snapshot.bin
+%{_appdir}/jbr/lib/fonts
+%{_appdir}/jbr/lib/jfr
+%dir %{_appdir}/jbr/lib/jli
+%attr(755,root,root) %{_appdir}/jbr/lib/jli/*.so
+%{_appdir}/jbr/lib/locales
+%{_appdir}/jbr/lib/security
+%dir %{_appdir}/jbr/lib/server
+%attr(755,root,root) %{_appdir}/jbr/lib/server/*.so
+%{_appdir}/jbr/lib/server/Xusage.txt
+%dir %{_appdir}/jbr/lib/swiftshader
+%attr(755,root,root) %{_appdir}/jbr/lib/swiftshader/*.so
 %{_appdir}/jbr/release
 %endif
